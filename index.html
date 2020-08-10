@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <title>Parsons Data Visualization Thesis Projects and Research</title>
   <!-- import CSS -->
-  <link rel='stylesheet' href='https://unpkg.com/element-ui@1.1.6/lib/theme-default/index.css'>
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://unpkg.com/element-ui@1.1.6/lib/theme-default/index.css">
+  <link rel="stylesheet" href="style.css">
 
 </head>
 <body>
@@ -50,9 +50,7 @@
         <div class="bottom-stripe col-md-12">
         <div class="bottom-stripe-inner"></div>
         </div>
-        <!-- <h3 class="col-md-10 col-md-offset-1">
-        <a href="https://livestream.com/thenewschool/dataviz-keynotes-2020" target="_blank"><i class='fa fa-play-circle' style='font-size:`16px'></i> Watch the Keynote Presentations</a>
-        </h3> -->
+
       </el-col>
 
     </el-row> <!-- msdv title -->
@@ -60,7 +58,7 @@
     <el-row class="search-wrapper" :gutter="10">
       
       <el-col :lg="12" :md="12" :sm="12" :xs="24">
-        <el-input placeholder="Filter by Student or Project Name" icon="search" v-model="filter">
+        <el-input placeholder="Filter by Student, Title or Hashtag" icon="search" v-model="filter">
       </el-col>
         
       <el-col class="col-space" :lg="6" :md="6" :sm="6" :xs="24"> &nbsp; </el-col>
@@ -76,6 +74,35 @@
       </el-col>
         
     </el-row> <!-- search wrapper -->
+
+    <el-row class="filter-wrapper" :gutter="10">
+    
+      <el-col :lg="24" :md="24" :sm="24" :xs="24">
+        <div class="filter">
+          <button type="button" @click=" filter='', doIt()" :class="{ active : filter == '' }">All</button>
+          <button type="button" @click=" filter='#agriculture', doIt()" :class="{ active : filter == '#agriculture' }">#agriculture</button>
+          <button type="button" @click=" filter='#arts', doIt()" :class="{ active : filter == '#arts' }">#arts</button>
+          <button type="button" @click=" filter='#competition', doIt()" :class="{ active : filter == '#competition' }">#competition</button>
+          <button type="button" @click=" filter='#culture', doIt()" :class="{ active : filter == '#culture' }">#culture</button>
+          <button type="button" @click=" filter='#data', doIt()" :class="{ active : filter == '#data' }">#data</button>
+          <button type="button" @click=" filter='#food', doIt()" :class="{ active : filter == '#food' }">#food</button>
+          <button type="button" @click=" filter='#health', doIt()" :class="{ active : filter == '#health' }">#health</button>
+          <button type="button" @click=" filter='#landscapes', doIt()" :class="{ active : filter == '#landscapes' }">#landscapes</button>
+          <button type="button" @click=" filter='#language', doIt()" :class="{ active : filter == '#language' }">#language</button>
+          <button type="button" @click=" filter='#leisure', doIt()" :class="{ active : filter == '#leisure' }">#leisure</button>
+          <button type="button" @click=" filter='#livelihood', doIt()" :class="{ active : filter == '#livelihood' }">#livelihood</button>
+          <button type="button" @click=" filter='#media', doIt()" :class="{ active : filter == '#media' }">#media</button>
+          <button type="button" @click=" filter='#pathways', doIt()" :class="{ active : filter == '#pathways' }">#pathways</button>
+          <button type="button" @click=" filter='#play', doIt()" :class="{ active : filter == '#play' }">#play</button>
+          <button type="button" @click=" filter='#policy', doIt()" :class="{ active : filter == '#policy' }">#policy</button>
+          <button type="button" @click=" filter='#politics', doIt()" :class="{ active : filter == '#politics' }">#politics</button>
+          <button type="button" @click=" filter='#society', doIt()" :class="{ active : filter == '#society' }">#society</button>                
+          <button type="button" @click=" filter='#technology', doIt()" :class="{ active : filter == '#technology' }">#technology</button>
+          <button type="button" @click=" filter='#understanding', doIt()" :class="{ active : filter == '#understanding' }">#understanding</button>
+        </div>
+      </el-col>
+  
+    </el-row> <!-- filter wrapper -->
       
     <el-row :gutter="10">
       <el-col v-for="student in getStudents" :xs="24" :sm="24" :md="8">
@@ -84,10 +111,32 @@
           <a class="box__title" v-bind:href="student.projectlink" target = "_blank"> {{ student.title }} </a>
           <!-- <div class="box__subtitle"> {{ student.subtitle }} </div> -->
           <div class="box__year"> Class of {{ student.year }} </div>
-          <img class="box__preview" v-bind:src="student.previews">
+
+          <div id="preview">
+            <a class="preoject" v-bind:href="student.projectlink" target = "_blank">
+              <img class="box__preview" v-bind:src="student.previews">
+            </a>
+          </div>
+          
           <div class="box__info"> {{ student.intro }} </div>
-          <a class="box__video" v-bind:href="student.videolink"> Video </a>
-          <div class="box__hashtag"> {{ student.hashtag }} </div>
+          
+          <div id="icon">
+            <a class="github" v-bind:href="student.githublink" target = "_blank">
+              <img src="assets/img/GitHub.png" alt="github" class="images">
+            </a>
+            <a class="video">
+              <img src="assets/img/video.png" alt="video" class="images">
+            </a>
+            <a class="download" v-bind:href="student.videolink">
+              <img src="assets/img/download.png" alt="video" class="images"> 
+            </a>
+          </div>
+
+          <div id="hashtag">
+            <div class="box__hashtag1"> {{ student.hashtag_1 }} </div>
+            <div class="box__hashtag2"> {{ student.hashtag_2 }} </div>
+          </div>
+
         </div>
       </el-col>
 
@@ -160,8 +209,9 @@
 </div> <!-- #app -->
 
 <!-- import JavaScript -->
-<script src='https://unpkg.com/vue/dist/vue.js'></script>
-<script src='https://unpkg.com/element-ui@1.1.6/lib/index.js'></script><script src="./script.js"></script>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/element-ui@1.1.6/lib/index.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
