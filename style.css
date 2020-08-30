@@ -98,41 +98,12 @@ img {
 }
 
 img:hover {
-  cursor: alias;
+  cursor: pointer;
 }
 
 h2 {
   font-family: "neue-regular" !important;
 }
-
-/*Media Queries*/
-
-/* @media only screen and (max-width: 1500px) {
-
-  #start-arrow{
-      display: none
-  }
-  .page{
-      height:auto;
-  }
-
-}
-
-@media only screen and (max-width: 768px) {
-  body {
-      font-size: 80%;
-  }
-  svg text{
-      font-size:50%;
-  }
-  .el-main{
-      padding:5px;
-  }
-  .spinner{
-      width: 100vw;
-  }
-} */
-
 
 div + .bottom-stripe,
 .project + .project,
@@ -156,14 +127,6 @@ a:hover {
   color: #e82e21 !important;
   text-decoration: none !important;
   transition: all .3s ease-in-out;
-}
-
-body,
-p,
-ul,
-input[type=text] {
-  font-family: "neue-regular";
-  font-size: 11pt;
 }
 
 p {
@@ -244,7 +207,7 @@ span {
 #banner h1.sitename {
   font-size: 2.33333rem;
   line-height: 2.46667rem;
-  margin-top: -0.2rem;
+  margin-top: 0.01rem;
   padding-left: 95px;
   color: #e82e21 !important;
   margin-left: .2rem;
@@ -279,10 +242,6 @@ span {
   color: #000 !important;
 }
 
-/* #stripe_menu {
-  background-color: #fff;
-} */
-
 #stripe_menu ul {
   margin: 0 0 5px 120px;
   list-style: none;
@@ -315,11 +274,6 @@ span {
 ul {
   margin-top: 0.7em !important;
 }
-
-/* ul li {
-  list-style: none;
-  margin-left: -2.7em;
-} */
 
 #inner-menu-stripe {
   margin-top: 1px;
@@ -378,13 +332,10 @@ iframe {
 
 
 /* 
-Search by student or project name
-Filter by year 
+Search, Filter and Hashtag
 */
 
 
-
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 [v-cloak] {
   display: none;
@@ -394,7 +345,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: white;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "neue-regular";
 }
 
 .search-wrapper {
@@ -407,10 +358,12 @@ body {
 
 button{
   background: #f5f5f5;
+  font-family: "neue-regular";
+  font-size: 0.75em;
   border: none;
-  border-radius: 3px;
-  padding: 10px 20px;
-  margin: 10px;
+  border-radius: 25px;
+  padding: 5px 10px;
+  margin: 5px;
   font-weight: bold;
   outline: none;
   cursor: pointer;
@@ -418,18 +371,19 @@ button{
 }
 
 button:hover{
-  background: #666666;
+  background-color: #666666;
   color: #fff;
 } 
 
 button.active{
-  background: #e82e21;
+  background-color: #e82e21;
   color: #fff;
 }
 
 .col-space {
   content: '&nbsp;';
 }
+
 @media screen and (max-width: 767px) {
   .col-space {
     display: none;
@@ -440,6 +394,7 @@ button.active{
   max-width: 980px;
   margin: 20px auto;
 }
+
 @media screen and (max-width: 1050px) {
   .container {
     width: 95%;
@@ -457,85 +412,116 @@ button.active{
   background-color: white;
   margin-bottom: 10px;
 }
-.box__name {
+
+.box_name {
   color: #000000;
-  font-size: 10pt;
-  font-weight: bold;
+  font-family: "neue-display-ultra" !important;
+  font-size: 0.75em;
   padding-top: 20px;
-  padding-right: 30px;
-  padding-left: 30px;
+  padding-right: 15px;
+  padding-left: 15px;
 }
-.box__title {
-  color: #a6a6a6;
-  font-size: 10pt;
+
+.box_title {
+  color: #000000;
+  font-family: "neue-regular" !important;
+  font-size: 0.75em;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.box_info {
+  font-size: 0.7em;
+  line-height: 16pt;
+  padding-right: 10%;
+  padding-left: 10%;
+}
+
+.showmore {
+  font-size: 1.1em;
+  margin-top: 1.5em;
+}
+
+.showmore .more, .showmore.show .dots {
+  display: none
+}
+
+.showmore.show .more {
+  display: inline
+}
+
+.showmore a {
+  cursor: pointer;
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
   font-style: italic;
-  padding-top: 10px;
-  padding-right: 30px;
-  padding-left: 30px;
 }
-/* .box__subtitle {
-  color: #a6a6a6;
-} */
-.box__year {
-  color: #a6a6a6;
-  font-size: 10pt;
-  padding-top: 10px;
-  padding-right: 30px;
-  padding-bottom: 20px;
-  padding-left: 30px;
-}
-.box__info {
-  color: #a6a6a6;
-  font-size: 10pt;
-  padding-top: 5px;
-  padding-right: 30px;
-  padding-bottom: 20px;
-  padding-left: 30px;
-}
-.box__github {
-  color: #a6a6a6;
-  font-size: 10pt;
-  padding-top: 0px;
-  padding-right: 30px;
-  padding-bottom: 20px;
-  padding-left: 30px;
-  margin-right: 40%;
-}
-.box__video {
-  color: #a6a6a6;
-  font-size: 10pt;
-  padding-top: 0px;
-  padding-right: 30px;
-  padding-bottom: 20px;
-  padding-left: 30px;
-}
-#hashtag {
-  text-align: center;
-}
-.box__hashtag1 {
-  color: #a6a6a6;
-  font-size: 10pt;
-  padding-top: 0px;
-  padding-right: 30px;
-  padding-bottom: 0px;
-  padding-left: 30px;
-}
-.box__hashtag2 {
-  color: #a6a6a6;
-  font-size: 10pt;
-  padding-top: 0px;
-  padding-right: 30px;
-  padding-bottom: 20px;
-  padding-left: 30px;
-}
-.box__empty {
+
+.box_empty {
   background-color: transparent;
   box-shadow: none;
 }
+
 .box:hover {
   cursor: pointer;
 }
 
 .el-select {
-  width: 100%;
+  width: 100%;  
+}
+
+
+
+/* 
+Override Element UI default styles
+*/
+
+
+
+.el-input__inner {
+  font-family: "neue-regular" !important;
+}
+
+.el-select-dropdown__item.hover {
+  background-color: #666666 !important;
+  color: white;
+}
+
+.el-select-dropdown__item.active {
+  background-color: #e82e21 !important;
+  color: white;
+}
+
+.el-select-dropdown__item.selected {
+  background-color: #e82e21 !important;
+  color: white;
+}
+
+
+
+/* 
+Footer
+*/
+
+
+
+#footer {
+  font-family: "neue-regular";
+  font-size: 0.8em;
+  line-height: 12pt;
+}
+
+#copyright {
+  font-family: "neue-regular";
+  font-size: 0.75em;
+}
+
+@media screen and (max-width: 767px) {
+  #footer {
+    font-size: 1em;
+    line-height: 16pt;
+  }
 }
